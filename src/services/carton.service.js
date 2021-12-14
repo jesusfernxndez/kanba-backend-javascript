@@ -28,7 +28,8 @@ const CreateCartonOfBingo = async ({ id, user_id }) => {
 };
 
 const SearchCartonOfBingo = (id) => {
-  return db.cartons.find((card) => card.id === id);
+  const carton = db.cartons.find((card) => card.id === id);
+  return carton
 };
 
 module.exports = {

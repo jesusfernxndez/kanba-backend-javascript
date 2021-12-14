@@ -1,4 +1,4 @@
-const { server, api } = require("../helpers");
+const { server } = require("../helpers");
 const { RandomNumberForBingo } = require("../../src/utils");
 
 test("Generate random number to bingo, range -> 1 - 75", async () => {
