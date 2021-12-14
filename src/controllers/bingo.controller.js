@@ -16,8 +16,9 @@ const RandomNumber = (req, res) => {
 };
 
 const WinBingoGame = async (req, res) => {
-  WinnerBingoGame()
-  res.status(200).send()
+  const winner = WinnerBingoGame({id_game: req.params.id_game, id_carton: req.params.id_carton})
+  if (!winner) return res.status(401).send({ error: 'No winner' })
+  res.status(200).send({ message: 'Winer !!!' })
 }
 
 module.exports = {

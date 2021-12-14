@@ -23,7 +23,21 @@ const NewRandomNumber = async ({id_game}) => {
 
 const WinnerBingoGame = ({id_game, id_carton}) => {
   const bingo = SearchBingoGame(id_game)
-  console.log(bingo)
+  const carton = db.cartons.find(carton => carton.id === id_carton)
+
+  const numbersOfCarton = []
+
+  for (const column in carton.numbers) {
+    for (let i = 0; i < carton.numbers[column].length; i++) {
+      numbersOfCarton.push(carton.numbers[column][i])
+    }
+  }
+
+  const validWinner = numbersOfCarton.filter(x => bingo.numbers.includes(x))
+
+  if (validWinner.length === 24) return true
+
+  return false
 }
 
 const SearchBingoGame = (id) => {
